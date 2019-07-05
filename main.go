@@ -1,16 +1,32 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func main() {
-	var arr1 []int = []int{1,5,2,4,8,6,7,2,3,55}
+	arr := []int{}
 
-	for j := 0; j < len(arr1); j++ {
-			for i := 1; i < len(arr1)-j; i++ {
-				if arr1[i-1] < arr1[i] {
-					arr1[i-1], arr1[i] = arr1[i], arr1[i-1]
+	for i := 0; i < 10; i++ {
+		arr = append(arr, rand.Intn(50))
+	}
+
+	fmt.Println(arr)
+
+	bubbleSort(arr)
+
+	fmt.Println(arr)
+}
+
+func bubbleSort(arr []int) {
+	for i := 0; i < len(arr); i++ {
+		for j := 0; j < len(arr); j++ {
+			for i := 1; i < len(arr)-j; i++ {
+				if arr[i-1] < arr[i] {
+					arr[i-1], arr[i] = arr[i], arr[i-1]
 				}
+			}
 		}
 	}
-	fmt.Println(arr1)
 }
